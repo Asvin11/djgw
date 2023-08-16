@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="manifest" href="manifest.json" />
+    <meta charset="UTF-8">
+    <script crossorigin="" type="module" src="index.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>Invent</title>
+    </head>
+<body>
+    <main>
+    <h1 style="margin-bottom: 20px;">Inventory</h1>
+    <script>
+        function hide()
+        {
+        document.getElementById("art").style.display='None';
+        document.getElementById("raw").style.display='None';
+        document.getElementById("rev").style.display='None';
+        }
+        function openNav() {
+        document.getElementById("mySidenav").style.width = "100%";
+        }
+        function closeNav() {
+        document.getElementById("mySidenav").style.width = "0";
+        }
+        var loadFile = function(event) {
+	        var image = document.getElementById('output');
+	        image.src = URL.createObjectURL(event.target.files[0]);
+            console.log(event.target.files[0].size)
+            console.log(image);
+        };
+        async function getpic(event)
+        {document.getElementById("status").innerHTML='<i class="fa-solid fa-spinner fa-spin" style="color: #ffff00;"></i>';
+            console.log(event.target)
+        var requestOptions = {
+            method: 'GET',
+            redirect: 'follow'
+        };
+        var imageUrl
+        await fetch("https://djapi.vercel.app/pic/"+event.target.id+"?key="+localStorage.pass, requestOptions)
+        .then((response) => response.blob())
+        .then((blob) => {
+            imageUrl = URL.createObjectURL(blob);
+            event.target.innerHTML="<img id='out"+event.target.id+"' width='600px'/>"
+            })
+            .catch(error => console.log('error', error));
+            document.getElementById("out"+event.target.id).src=imageUrl;
+            document.getElementById("status").innerHTML='<i class="fa-solid fa-check" style="color: #00ff00;"></i>';
+        };
+        async function einit(event)
+        {
+            document.getElementById("status").innerHTML='<i class="fa-solid fa-spinner fa-spin" style="color: #ffff00;"></i>';
+            hide();
+            document.getElementById("editor").style.display='block';
+            document.getElementById("eid").value=event.target.id;
+            var requestOptions = {
+            method: 'GET',
+            redirect: 'follow'
+                };
+            var opts="";
+            await fetch("https://djapi.vercel.app/spec/"+event.target.id+"?key="+localStorage.pass, requestOptions)
+            .then(response => response.json())
+            .then(async result =>{
+                var d=new Date(result[0][0])
+                document.getElementById("edt").valueAsDate=d;
+                document.getElementById("enm").value=result[0][1];
+                document.getElementById("ert").value=result[0][2];
+                document.getElementById("est").value=result[0][3];
+                document.getElementById("eamt").value=result[0][4];
+                document.getElementById("enote").value=result[0][5];
+                var requestOptions = {
+                    method: 'GET',
+                    redirect: 'follow'
+                };
+                var imageUrl
+                console.log(result[0][6]);
+                await fetch("https://djapi.vercel.app/pic/"+result[0][6]+"?key="+localStorage.pass, requestOptions)
+                .then((response) => response.blob())
+                .then((blob) => {
+                    imageUrl = URL.createObjectURL(blob);
+                })
+                .catch(error => console.log('error', error));
+                document.getElementById("eoutput").src=imageUrl;
+            }
+            )
+            .catch(error =>{console.log('error', error);
+            document.getElementById("status").innerHTML='<i class="fa-solid fa-xmark" style="color: #ff0000;"></i>';
+            });
+            document.getElementById("status").innerHTML='<i class="fa-solid fa-check" style="color: #00ff00;"></i>';
+        }
+        var eloadFile = function(event) {
+	        var image = document.getElementById('eoutput');
+	        image.src = URL.createObjectURL(event.target.files[0]);
+            console.log(event.target.files[0].size)
+            console.log(image);
+        }; 
+    </script>
+    <div id="mySidenav" class="sidenav">
+        <span id="butr" onclick="closeNav()">Raw Material</span>
+        <span id="butf" onclick="closeNav()">Finished Article</span>
+        <span id="butg" onclick="closeNav()">Review Data</span>
+        <a class="closebtn" onclick="closeNav()">&times;</a>
+    </div>
+      <span onclick="openNav()">Menu</span>
+      <div id="auth">
+      <input id="key" placeholder="key" type="password">
+      <button id="chk">Check</button>
+      </div>
+        <div id="status">
+        </div>
+    <hr>
+    <div id="raw">
+    <h2>Input Raw</h2>
+    <div>
+        <p>Name</p>
+        <p>Rate</p>
+    </div>
+    <div>
+        <input id="nm">
+        <input type="number" id="rt" value=0>
+    </div>
+    <div>
+        <p>Stock</p>
+        <p>Amount</p>
+    </div>
+    <div>
+        <input type="number" id="st" value=0>
+        <input type="number" id="amt" value=0>
+    </div>
+    <div>
+        <p>Date</p>
+        <p>Note</p>
+    </div>
+    <div>
+        <input id="dt" type="date" placeholder="DD/MM/YYYY">
+        <input id="note" placeholder="Note">
+    </div>
+    <div>
+        <p>Image</p>
+    </div>
+    
+    <input id="img" type="file" accept="image/*;capture=camera" onchange="loadFile(event)">
+        <p><button id="get">Done</button></p>
+        <hr style="width: 100%;">
+        <p><img id="output" width="75%" /></p>   
+        <p><canvas id="can" style="display: none;"></canvas></p>
+    </div>
+    
+
+    <div id="art">
+        <h3>Article Area</h3>
+    </div>
+
+    <div id="rev">
+        <h3>Review Area</h3>
+        <p>Name</p>
+        <input list="slist" id="nmsr" placeholder="Enter name" style="width:80vw">
+        <datalist id="slist">
+            <option>abc</option>
+            <option>def</option>
+        </datalist>
+        <p><button id="sr">Search</button></p>
+        <table id="revtbl">
+        </table>
+    </div>
+    <hr>
+
+    <div id="editor">
+        <h2>Edit here</h2>
+        <div>
+            <p><button id="delete" style="background-color: red;">Delete</button></p>
+        </div>
+        <div>
+            <p>Id</p>
+            <input id="eid" disabled>
+        </div>
+        <div>
+            <p>Name</p>
+            <p>Rate</p>
+        </div>
+        <div>
+            <input id="enm">
+            <input type="number" id="ert" value=0>
+        </div>
+        <div>
+            <p>Stock</p>
+            <p>Amount</p>
+        </div>
+        <div>
+            <input type="number" id="est" value=0>
+            <input type="number" id="eamt" value=0>
+        </div>
+        <div>
+            <p>Date</p>
+            <p>Note</p>
+        </div>
+        <div>
+            <input id="edt" type="date" placeholder="DD/MM/YYYY">
+            <input id="enote" placeholder="Note">
+        </div>
+        <div>
+            <p>Image</p>
+        </div>
+        
+        <input id="eimg" type="file" accept="image/*;capture=camera" onchange="eloadFile(event)">
+            <p><button id="ebut">Save</button></p>
+            <hr style="width: 100%;">
+            <p><img id="eoutput" width="75%" /></p>   
+            <p><canvas id="ecan" style="display: none;"></canvas></p>
+        </div>
+
+    <script src="https://kit.fontawesome.com/7c8801c017.js" crossorigin="anonymous"></script>
+    </main>
+</body>
+</html>

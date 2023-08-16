@@ -1,0 +1,14 @@
+{
+    "name": "Invent",
+    "short_name": "Invent",
+    "start_url": "index.html",
+    "display": "standalone",
+    "background_color": "black",
+    "theme_color": "aqua",
+    "orientation": "portrait-primary",
+    "icons": [
+        {
+          "src": "logo.jpeg",
+          "type": "image/jpeg", "sizes": "552x552"
+        }]
+}

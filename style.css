@@ -1,0 +1,142 @@
+*{
+    margin: 5px;
+    padding: 0;
+    border: 0;
+    outline: none;
+    box-sizing: border-box;
+    font-family: 'Courier New', Courier, monospace;
+    text-align: center;
+    font-size:3vh;
+}
+body{
+    color: #e5f1fb;
+    display:flexbox;
+    align-items: center;
+    justify-content:center;
+    background: #010304;
+}
+div{
+    display:flex;
+    justify-content: center;
+    position:relative;
+}
+p
+{
+    margin-right: 10vw;
+    margin-left: 10vw;
+}
+input
+{
+    color:white;
+    background-color:#270448;
+    border-radius: 5%;
+    width: 45vw;
+    height:auto;
+    padding: 1%;
+}
+#img
+{
+    width: 80%;
+}
+#raw,#editor
+{
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    display: block;
+}
+button{
+    padding: 10px;
+    justify-self: center;
+    align-self: center;
+    cursor: pointer;
+    width:auto;
+    height:auto;
+    color:#e5f1fb;
+    background: #2c35dd;
+    border-radius: 10%;
+}
+button:hover {
+  box-shadow: 0 20px 60px 1px #2c35dd;
+}
+
+ /* The side navigation menu */
+ .sidenav {
+    height: 100%; /* 100% Full-height */
+    width: 0; /* 0 width - change this with JavaScript */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Stay on top */
+    top: 0; /* Stay at the top */
+    left: 0;
+    background-color: #270448; /* Black*/
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 60px; /* Place content 60px from the top */
+    transition: 0.2s; /* 0.5 second transition effect to slide in the sidenav */
+    display:grid;
+    align-items: center;
+    justify-content: center;
+  }
+  #over
+  {
+    height: 100%; /* 100% Full-height */
+    width: 100vw; /* 0 width - change this with JavaScript */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Stay on top */
+    top: 0; /* Stay at the top */
+    left: 0;
+    display:none;
+    align-items: center;
+    justify-content: center;
+  }
+  span
+  {
+    background-color: #2c35dd;
+    padding: 8px;
+    border-radius: 10px;
+  }
+  span:hover {
+    box-shadow: 0 20px 80px -5px #2c35dd;
+  }
+
+  .sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 10vw;
+    color: #818181;
+    width: 100%;
+    display:contents;
+    transition: 0.3s;
+  }
+
+  .sidenav a:hover {
+    color: #f1f1f1;
+  }
+  
+  .sidenav .closebtn {
+    font-size: 20vh;
+  }
+ 
+  @media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+  }
+  table {
+    border-collapse: collapse;
+    width:max-content;
+  }
+  th
+  {
+    background-color: #270448;
+    width: 10%;
+  }
+  th, td {
+    padding: 8px;
+    border: 1px solid #9026f2;
+  }
+  table tr:hover {
+    font-weight: bolder;
+  }
+  table tr:nth-of-type(even) {
+    background-color: #031526;
+  }
+  
