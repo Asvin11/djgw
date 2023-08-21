@@ -78,8 +78,7 @@
                 .then((response) => response.blob())
                 .then((blob) => {
                     imageUrl = URL.createObjectURL(blob);
-                })
-                .catch(error => console.log('error', error));
+                });
                 document.getElementById("eoutput").src=imageUrl;
             }
             )
@@ -133,7 +132,7 @@
     </div>
     <div>
         <input id="dt" type="date" placeholder="DD/MM/YYYY">
-        <input id="note" placeholder="Note">
+        <textarea id="note" placeholder="Note"></textarea>
     </div>
     <div>
         <p>Image</p>
@@ -196,7 +195,7 @@
         </div>
         <div>
             <input id="edt" type="date" placeholder="DD/MM/YYYY">
-            <input id="enote" placeholder="Note">
+            <textarea id="enote" placeholder="Note"></textarea>
         </div>
         <div>
             <p>Image</p>

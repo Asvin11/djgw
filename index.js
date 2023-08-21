@@ -153,6 +153,10 @@ async function comp()
 
   var canvas = document.getElementById("can");
   var ctx = canvas.getContext('2d');
+  if(image.naturalWidth==0 && image.naturalHeight==0)
+  {
+    return;
+  }
   console.log(image.naturalWidth)
   console.log(image.naturalHeight)
   canvas.width=(image.naturalWidth/15)
@@ -169,6 +173,10 @@ async function ecomp()
 
   var canvas = document.getElementById("ecan");
   var ctx = canvas.getContext('2d');
+  if(image.naturalWidth==0 && image.naturalHeight==0)
+  {
+    return;
+  }
   console.log(image.naturalWidth)
   console.log(image.naturalHeight)
   canvas.width=(image.naturalWidth/15)
@@ -216,6 +224,12 @@ async function srch()
   await fetch("https://djapi.vercel.app/all/"+document.getElementById("nmsr").value+"?key="+localStorage.pass, requestOptions)
     .then(response => response.json())
     .then(result =>{
+      if(result['message']=='article not found')
+      {
+        document.getElementById("status").innerHTML='<i class="fa-solid fa-xmark" style="color: #ff0000;"></i>'+"<p style='color:red'>No match found</p>";
+        tbl="";
+        return;
+      }
       for(i=0;i<result.length;i++)
       {
         tbl=tbl+"<tr>";
@@ -241,8 +255,7 @@ async function srch()
       }
       document.getElementById("status").innerHTML='<i class="fa-solid fa-check" style="color: #00ff00;"></i>';
       })
-    .catch(error =>{console.log('error', error);
-    document.getElementById("status").innerHTML='<i class="fa-solid fa-xmark" style="color: #ff0000;"></i>';
+    .catch(error =>{document.getElementById("status").innerHTML='<i class="fa-solid fa-xmark" style="color: #ff0000;"></i>';
 });
   revtbl.innerHTML=tbl;
   return;

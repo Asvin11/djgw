@@ -25,13 +25,13 @@ p
     margin-right: 10vw;
     margin-left: 10vw;
 }
-input
+input,textarea
 {
     color:white;
     background-color:#270448;
     border-radius: 5%;
     width: 45vw;
-    height:auto;
+    height:fit-content;
     padding: 1%;
 }
 #img
