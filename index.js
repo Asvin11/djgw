@@ -24,11 +24,20 @@ const divedit=document.getElementById("editor")
 
 const revtbl=document.getElementById("revtbl")
 
-function calc()
+function calc(event)
 {
-  if(rt.value!='' && st.value!='')
+  console.log(event.target)
+  if(rt.value!='' && st.value!='' && rt.value!=0 && st.value!=0 && event.target.id!="amt")
   {
     amt.value=rt.value*st.value;
+  }
+  if(amt.value!='' && st.value!='' && amt.value!=0 && st.value!=0 && event.target.id!="rt")
+  {
+    rt.value=amt.value/st.value;
+  }
+  if(amt.value!='' && rt.value!='' && amt.value!=0 && rt.value!=0 && event.target.id!="st")
+  {
+    st.value=amt.value/rt.value;
   }
 }
 
@@ -36,9 +45,9 @@ function rawclr()
 {
   img.value=null;
   nm.value='';
-  rt.value='';
-  st.value='';
-  amt.value='';
+  rt.value=0;
+  st.value=0;
+  amt.value=0;
   note.value='';
 }
 
@@ -342,6 +351,7 @@ document.getElementById("butg").addEventListener('click',shre)
 document.getElementById("sr").addEventListener('click',srch)
 document.getElementById("st").addEventListener('input',calc)
 document.getElementById("rt").addEventListener('input',calc)
+document.getElementById("amt").addEventListener('input',calc)
 document.getElementById("ebut").addEventListener('click',update)
 document.getElementById("delete").addEventListener('click',delt)
 document.getElementById("chk").addEventListener('click',ck)
