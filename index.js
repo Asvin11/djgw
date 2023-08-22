@@ -32,6 +32,16 @@ function calc()
   }
 }
 
+function rawclr()
+{
+  img.value=null;
+  nm.value='';
+  rt.value='';
+  st.value='';
+  amt.value='';
+  note.value='';
+}
+
 function ck()
 {
       var formdata = new FormData();
@@ -335,3 +345,4 @@ document.getElementById("rt").addEventListener('input',calc)
 document.getElementById("ebut").addEventListener('click',update)
 document.getElementById("delete").addEventListener('click',delt)
 document.getElementById("chk").addEventListener('click',ck)
+document.getElementById("clrd").addEventListener('click',rawclr)
