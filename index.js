@@ -27,15 +27,15 @@ const revtbl=document.getElementById("revtbl")
 function calc(event)
 {
   console.log(event.target)
-  if(rt.value!='' && st.value!='' && rt.value!=0 && st.value!=0 && event.target.id!="amt")
+  if(rt.value!='' && st.value!='' && rt.value!=0 && st.value!=0 && event.target.id=="bamt")
   {
     amt.value=rt.value*st.value;
   }
-  if(amt.value!='' && st.value!='' && amt.value!=0 && st.value!=0 && event.target.id!="rt")
+  if(amt.value!='' && st.value!='' && amt.value!=0 && st.value!=0 && event.target.id=="brt")
   {
     rt.value=amt.value/st.value;
   }
-  if(amt.value!='' && rt.value!='' && amt.value!=0 && rt.value!=0 && event.target.id!="st")
+  if(amt.value!='' && rt.value!='' && amt.value!=0 && rt.value!=0 && event.target.id=="bst")
   {
     st.value=amt.value/rt.value;
   }
@@ -349,9 +349,9 @@ document.getElementById("butf").addEventListener('click',sha)
 document.getElementById("butr").addEventListener('click',shr)
 document.getElementById("butg").addEventListener('click',shre)
 document.getElementById("sr").addEventListener('click',srch)
-document.getElementById("st").addEventListener('input',calc)
-document.getElementById("rt").addEventListener('input',calc)
-document.getElementById("amt").addEventListener('input',calc)
+document.getElementById("bst").addEventListener('click',calc)
+document.getElementById("brt").addEventListener('click',calc)
+document.getElementById("bamt").addEventListener('click',calc)
 document.getElementById("ebut").addEventListener('click',update)
 document.getElementById("delete").addEventListener('click',delt)
 document.getElementById("chk").addEventListener('click',ck)
