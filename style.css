@@ -56,6 +56,11 @@ button{
     background: #2c35dd;
     border-radius: 10%;
 }
+button:disabled,
+button[disabled]
+{
+  background-color: #031526;
+}
 button:hover {
   box-shadow: 0 20px 60px 1px #2c35dd;
 }

@@ -49,6 +49,7 @@ function rawclr()
   st.value=0;
   amt.value=0;
   note.value='';
+  document.getElementById('output').src='';
 }
 
 function ck()
@@ -122,10 +123,12 @@ function shre()
 
 async function dt()
 {
+  gt.disabled=true;
   if(nm.value == null || nm.value.trim() == '')
   {
     console.log("exit")
     document.getElementById("status").innerHTML='<p style="color:red">Name is missing<p>';
+    gt.disabled=false;
     return;
   }
     await comp();
@@ -160,6 +163,8 @@ async function dt()
       .then(response => response.text())
       .then(result => {console.log(result);
         document.getElementById("status").innerHTML='<i class="fa-solid fa-check" style="color: #00ff00;"></i><p style="color:green">'+result+'</p>';
+        rawclr();
+        gt.disabled=false;
       })
       .catch(error =>{console.log('error', error);
       document.getElementById("status").innerHTML='<i class="fa-solid fa-xmark" style="color: #ff0000;"></i>';

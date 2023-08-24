@@ -105,27 +105,26 @@
       <input id="key" placeholder="key" type="password">
       <button id="chk">Check</button>
       </div>
-        <div id="status">
-        </div>
     <hr>
     <div id="raw">
     <h2>Input Raw</h2>
     <span id="clrd">Clear</span>
+    <form>
     <div>
         <p>Name</p>
         <p>Rate</p>
     </div>
     <div>
         <input id="nm">
-        <input type="number" id="rt" value=0 onclick="this.select();"><i id="brt" class="fa-solid fa-calculator fa-2xl" style="color: #00ff00;"></i>
+        <input type="number" id="rt" value=0 onclick="this.select();"><i id="brt" class="fa-solid fa-calculator fa-xl" style="color: #00ff00;"></i>
     </div>
     <div>
         <p>Stock</p>
         <p>Amount</p>
     </div>
     <div>
-        <input type="number" id="st" value=0 onclick="this.select();"><i id="bst" class="fa-solid fa-calculator fa-2xl" style="color: #00ff00;"></i>
-        <input type="number" id="amt" value=0 onclick="this.select();"><i id="bamt" class="fa-solid fa-calculator fa-2xl" style="color: #00ff00;"></i>
+        <input type="number" id="st" value=0 onclick="this.select();"><i id="bst" class="fa-solid fa-calculator fa-xl" style="color: #00ff00;"></i>
+        <input type="number" id="amt" value=0 onclick="this.select();"><i id="bamt" class="fa-solid fa-calculator fa-xl" style="color: #00ff00;"></i>
     </div>
     <div>
         <p>Date</p>
@@ -138,15 +137,15 @@
     <div>
         <p>Image</p>
     </div>
+</form>
     
     <input id="img" type="file" accept="image/*;capture=camera" onchange="loadFile(event)">
-        <p><button id="get">Done</button></p>
+        <p><img id="output" width="75%" /></p>
         <hr style="width: 100%;">
-        <p><img id="output" width="75%" /></p>   
+        <p><button id="get" style="margin-top: 10vh;">Done</button></p>
         <p><canvas id="can" style="display: none;"></canvas></p>
     </div>
     
-
     <div id="art">
         <h3>Article Area</h3>
     </div>
@@ -203,12 +202,13 @@
         </div>
         
         <input id="eimg" type="file" accept="image/*;capture=camera" onchange="eloadFile(event)">
-            <p><button id="ebut">Save</button></p>
             <hr style="width: 100%;">
-            <p><img id="eoutput" width="75%" /></p>   
+            <p><img id="eoutput" width="75%" /></p>
+            <p><button id="ebut">Save</button></p>   
             <p><canvas id="ecan" style="display: none;"></canvas></p>
         </div>
-
+        <div id="status">
+        </div>
     <script src="https://kit.fontawesome.com/7c8801c017.js" crossorigin="anonymous"></script>
     </main>
 </body>
